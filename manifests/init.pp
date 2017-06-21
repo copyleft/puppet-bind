@@ -16,12 +16,13 @@
 #  }
 #
 class bind (
-  $chroot            = false,
-  $service_reload    = true,
-  $servicename       = $::bind::params::servicename,
-  $packagenameprefix = $::bind::params::packagenameprefix,
-  $binduser          = $::bind::params::binduser,
-  $bindgroup         = $::bind::params::bindgroup,
+  $chroot                  = false,
+  $service_reload          = true,
+  $servicename             = $::bind::params::servicename,
+  $packagenameprefix       = $::bind::params::packagenameprefix,
+  $binduser                = $::bind::params::binduser,
+  $bindgroup               = $::bind::params::bindgroup,
+  $service_restart_command = $::bind::params::service_restart_command,
 ) inherits ::bind::params {
 
   # Chroot differences
@@ -49,6 +50,7 @@ class bind (
   class { '::bind::service':
     servicename    => "${servicename}${servicenamesuffix}",
     service_reload => $service_reload,
+    service_restart_command => $service_restart_command,
   }
 
   # We want a nice log file which the package doesn't provide a location for
@@ -62,4 +64,21 @@ class bind (
     before  => Class['::bind::service'],
   }
 
+  # disable obsolete includes from Debian package
+  if $::osfamily == 'debian' {
+
+    $content = "//\n// This include file is obsolete.\n// named.conf is Puppet managed as a single file\n//\n"
+
+    file { '/etc/bind/named.conf.local':
+      ensure => file,
+      content   => $content,
+      require =>  Class['bind::package'],
+    }
+
+    file { '/etc/bind/named.conf.options':
+      ensure => file,
+      content   => $content,
+      require =>  Class['bind::package'],
+    }
+  }
 }
