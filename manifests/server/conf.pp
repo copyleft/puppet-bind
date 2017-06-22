@@ -163,6 +163,8 @@ define bind::server::conf (
   $keys                   = {},
   $includes               = [],
   $views                  = {},
+  $rndc                   = $::bind::params::rndc,
+  $rndcconf               = $::bind::params::rndcconf,
 ) {
   
   # Everything is inside a single template

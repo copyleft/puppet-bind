@@ -13,6 +13,8 @@ class bind::params {
       $dump_dir                = '/var/named/data'
       $hintsfile               = 'named.ca'
       $rfc1912zones            = '/etc/named.rfc1912.zones'
+      $rndc                    = true
+      $rndcconf                = '/etc/rndc.conf'
       $zonedir                 = '/var/named'
       $service_restart_command = "service ${servicename} reload"
     }
@@ -26,6 +28,8 @@ class bind::params {
       $dump_dir                = '/var/tmp'
       $hintsfile               = undef    # hints included in named.conf.default-zones
       $rfc1912zones            = '/etc/bind/named.conf.default-zones'
+      $rndc                    = true
+      $rndcconf                = '/etc/rndc.conf'
       $zonedir                 = '/etc/bind'
       $service_restart_command = "service ${servicename} reload"
     }
@@ -51,6 +55,8 @@ class bind::params {
       $bindkeysfile            = '/etc/named.iscdlv.key'
       $directory               = '/var/named'
       $dump_dir                = '/var/named/data'
+      $rndc                    = true
+      $rndcconf                = '/etc/rndc.conf'
       $zonedir                 = '/var/named'
       $service_restart_command = "service ${servicename} reload"
     }

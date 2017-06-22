@@ -23,6 +23,8 @@ class bind (
   $binduser                = $::bind::params::binduser,
   $bindgroup               = $::bind::params::bindgroup,
   $service_restart_command = $::bind::params::service_restart_command,
+  $rndc                    = $::bind::params::rndc,
+  $rndcconf                = $::bind::params::rndcconf,
 ) inherits ::bind::params {
 
   # Chroot differences
@@ -79,6 +81,24 @@ class bind (
       ensure => file,
       content   => $content,
       require =>  Class['bind::package'],
+    }
+  }
+
+  # Populate /etc/rndc.conf
+  if $rndc {
+    file {
+      $rndcconf:
+        ensure => file,
+        owner  => $binduser,
+        group  => $bindgroup,
+        mode   => '0640',
+        source => 'puppet:///modules/bind/rndc.conf';
+      '/etc/bind/named_rndc.conf':
+        ensure => file,
+        owner  => $binduser,
+        group  => $bindgroup,
+        mode   => '0640',
+        source => 'puppet:///modules/bind/named_rndc.conf';      
     }
   }
 }
