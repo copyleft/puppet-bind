@@ -216,5 +216,5 @@ include "<%= filename %>";
 <% end -%>
 
 <% if @rndc -%>
-include "named_rndc.conf";
+include "<%= @rndcnamedconf %>";
 <% end -%>

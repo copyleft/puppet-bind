@@ -15,6 +15,7 @@ class bind::params {
       $rfc1912zones            = '/etc/named.rfc1912.zones'
       $rndc                    = true
       $rndcconf                = '/etc/rndc.conf'
+      $rndcnamedconf           = '/var/named/named_rndc.conf'
       $zonedir                 = '/var/named'
       $service_restart_command = "service ${servicename} reload"
     }
@@ -30,6 +31,7 @@ class bind::params {
       $rfc1912zones            = '/etc/bind/named.conf.default-zones'
       $rndc                    = true
       $rndcconf                = '/etc/rndc.conf'
+      $rndcnamedconf           = '/etc/bind/named_rndc.conf'
       $zonedir                 = '/etc/bind'
       $service_restart_command = "service ${servicename} reload"
     }
@@ -57,6 +59,7 @@ class bind::params {
       $dump_dir                = '/var/named/data'
       $rndc                    = true
       $rndcconf                = '/etc/rndc.conf'
+      $rndcnamedconf           = '/var/named/named_rndc.conf'
       $zonedir                 = '/var/named'
       $service_restart_command = "service ${servicename} reload"
     }

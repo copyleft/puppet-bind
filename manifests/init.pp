@@ -25,6 +25,7 @@ class bind (
   $service_restart_command = $::bind::params::service_restart_command,
   $rndc                    = $::bind::params::rndc,
   $rndcconf                = $::bind::params::rndcconf,
+  $rndcnamedconf           = $::bind::params::rndcnamedconf,
 ) inherits ::bind::params {
 
   # Chroot differences
@@ -93,7 +94,7 @@ class bind (
         group  => $bindgroup,
         mode   => '0640',
         source => 'puppet:///modules/bind/rndc.conf';
-      '/etc/bind/named_rndc.conf':
+      $rndcnamedconf:
         ensure => file,
         owner  => $binduser,
         group  => $bindgroup,
