@@ -134,8 +134,6 @@ define bind::server::conf (
   $listen_on_v6_addr      = [ '::1' ],
   $forwarders             = [],
   $directory              = $::bind::params::directory,
-  $rfc1912zones          = $::bind::params::rfc1912zones,
-  $bindkeysfile          = $::bind::params::bindkeysfile,
   $managed_keys_directory = undef,
   $hostname               = undef,
   $server_id              = undef,
