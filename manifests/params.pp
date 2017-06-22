@@ -30,7 +30,7 @@ class bind::params {
       $hintsfile               = undef    # hints included in named.conf.default-zones
       $rfc1912zones            = '/etc/bind/named.conf.default-zones'
       $rndc                    = true
-      $rndcconf                = '/etc/rndc.conf'
+      $rndcconf                = '/etc/bind/rndc.conf'
       $rndcnamedconf           = '/etc/bind/named_rndc.conf'
       $zonedir                 = '/etc/bind'
       $service_restart_command = "service ${servicename} reload"
