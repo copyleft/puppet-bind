@@ -3,7 +3,7 @@
 class bind::params {
 
   case $::osfamily {
-    'RedHat': {
+    'redhat': {
       $packagenameprefix       = 'bind'
       $servicename             = 'named'
       $binduser                = 'root'
@@ -16,7 +16,7 @@ class bind::params {
       $zonedir                 = '/var/named'
       $service_restart_command = "service ${servicename} reload"
     }
-    'Debian': {
+    'debian': {
       $packagenameprefix       = 'bind9'
       $servicename             = 'bind9'
       $binduser                = 'bind'
@@ -29,7 +29,7 @@ class bind::params {
       $zonedir                 = '/etc/bind'
       $service_restart_command = "service ${servicename} reload"
     }
-    'Freebsd': {
+    'freebsd': {
       $packagenameprefix       = 'bind910'
       $servicename             = 'named'
       $binduser                = 'bind'
