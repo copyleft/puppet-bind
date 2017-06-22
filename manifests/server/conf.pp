@@ -143,6 +143,9 @@ define bind::server::conf (
   $dump_file              = $::bind::params::dump_file,
   $statistics_file        = $::bind::params::statistics_file,
   $memstatistics_file     = $::bind::params::memstatistics_file,
+  $hintsfile              = $::bind::params::hintsfile
+  $rfc1912zones           = $::bind::params::rfc1912zones
+  $bindkeysfile           = $::bind::params::bindkeysfile
   $statistics_channels    = {},
   $allow_query            = [ 'localhost' ],
   $allow_query_cache      = [],
@@ -162,11 +165,6 @@ define bind::server::conf (
   $views                  = {},
 ) {
   
-  # set distribution specific variables that are used in the template
-  $hintsfile    = $::bind::params::hintsfile
-  $rfc1912zones = $::bind::params::rfc1912zones
-  $bindkeysfile = $::bind::params::bindkeysfile
-
   # Everything is inside a single template
   file { $directory:
       ensure => directory,
