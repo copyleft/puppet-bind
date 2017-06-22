@@ -170,7 +170,6 @@ define bind::server::conf (
       ensure => directory,
   }
   file { $title:
-    require => Class['bind::package'],
     notify  => Class['bind::service'],
     content => template('bind/named.conf.erb'),
     require => Class['bind::package'],
