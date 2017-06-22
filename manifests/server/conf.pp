@@ -154,7 +154,6 @@ define bind::server::conf (
   $dnssec_enable          = 'yes',
   $dnssec_validation      = 'auto',
   $dnssec_lookaside       = undef,
-  $bindkeysfile          = undef,
   $hostname               = 'none',
   $server_id              = undef,
   $zones                  = {},
@@ -164,7 +163,7 @@ define bind::server::conf (
 ) {
   
   # set distribution specific variables that are used in the template
-  $hintsfile = $::bind::params::hintsfile
+  $hintsfile    = $::bind::params::hintsfile
   $rfc1912zones = $::bind::params::rfc1912zones
   $bindkeysfile = $::bind::params::bindkeysfile
 
