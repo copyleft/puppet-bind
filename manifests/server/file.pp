@@ -29,8 +29,8 @@
 #  }
 #
 define bind::server::file (
-  $zonedir     = $::bind::params::directory,
-#  $zonedir     = $::bind::params::zonedir,
+#  $zonedir     = $::bind::params::directory,
+  $zonedir     = $::bind::params::zonedir,
   $owner       = 'root',
   $group       = $::bind::params::bindgroup,
   $mode        = '0640',
