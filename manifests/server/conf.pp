@@ -157,7 +157,6 @@ define bind::server::conf (
   $dnssec_enable          = 'yes',
   $dnssec_validation      = 'auto',
   $dnssec_lookaside       = undef,
-  $hostname               = 'none',
   $zones                  = {},
   $keys                   = {},
   $includes               = [],
